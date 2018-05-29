@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: url(../img/login_bg.png);
+    font-family: "微软雅黑";
+}
+#login_logo{
+	
+	display: block;
+	position: relative;
+	top: 230px;
+	left: 200PX;
+}
+.right_box{
+	width: 500px;
+	height: 600px;
+	background: white;
+	position: absolute;
+	right: 200px;
+	top: 120px;
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+	border-radius: 30px;
+}
+.right_box_mainbox{
+	width: 400px;
+	height: 430px;
+	margin: 50px;
+	padding-top: 70px;
+}
+.label{
+	font-size: 25px;
+	text-align: center;
+	font-weight: bold;
+	color: #404040;
+}
+.box{
+	height: 20px;
+	width: 200px;
+	height: 30px;
+	margin: 20px auto;
+}
+#btn_box{
+	margin: 0 auto;
+	width: 230px;
+	margin-top: 100px;
+}
+.btn{
+	width: 100px;
+	height: 40px;
+	float: left;
+}
+.textbox {
+    margin: 0;
+    border-radius: 20px;
+    border: solid 2px #404040;
+    font-size: 20px;
+    padding: 0 10px;
+    text-align: center;
+    outline: none;
+}
+.button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#Button1, #Button3{
+    background: #f45147;
+    color: white;
+}
+#Button2, #Button4{
+    border: 5px solid #f45147;
+    color: #404040;
+}
+.decoration{
+	width: 500px;
+	height: 50px;
+	background: #F45147;
+	position: absolute;
+	left: 0px;
+	font-size: 30px;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	line-height: 50px;
+}
+#decoration_1{
+	top: 0px;
+	border-radius: 30px 30px 0 0;
+}
+#decoration_2{
+	bottom: 0px;
+	border-radius: 0 0 30px 30px;
+}
+.title{
+	padding-left: 15px;
+	letter-spacing: 15px;
+}
+#show_developer_setting{
+	font-size: 10px;
+	text-align: center;
+	font-weight: 100;
+}
+#show_developer_setting a{
+	cursor: pointer;
+}
+#developer_panel{
+	width: 500px;
+	height: 50px;
+	background: #F45147;
+	padding-top: 20px;
+	position: relative;
+	top: -50px;
+	border-radius: 0 0 30px 30px;
+	display: none;
+}
+#developer_panel input{
+	margin: 0 auto;
+	display: block;
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
