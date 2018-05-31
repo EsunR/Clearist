@@ -37,15 +37,15 @@
             	<div class="decoration" id="decoration_2"></div>
 	            <div class="label">用户名</div>
 	            <div class="box" id="id_box">
-	                <asp:TextBox ID="TextBox3" CssClass="box textbox" runat="server"></asp:TextBox>
+	                <asp:TextBox ID="TextBox3" CssClass="box textbox" runat="server" Width="180px"></asp:TextBox>
 	            </div>
 	            <div class="label">密 码</div>
 	            <div class="box" id="psw_box">
-	                <asp:TextBox ID="TextBox4" CssClass="box textbox" runat="server"></asp:TextBox>
+	                <asp:TextBox ID="TextBox4" CssClass="box textbox" runat="server" Width="180px"></asp:TextBox>
 	            </div>
 	            <div class="label">重复密码</div>
 	            <div class="box" id="repsw_box">
-	                <asp:TextBox ID="TextBox5" CssClass="box textbox" runat="server"></asp:TextBox>
+	                <asp:TextBox ID="TextBox5" CssClass="box textbox" runat="server" Width="180px"></asp:TextBox>
 	            </div>
 	            <div id="btn_box" style="margin-top: 50px;">
 		            <div id="loginbtn_box" class="btn">
@@ -71,11 +71,11 @@
             	</div>
 	            <div class="label">用户名</div>
 	            <div class="box" id="id_box">
-	                <asp:TextBox ID="TextBox1" CssClass="box textbox" runat="server"></asp:TextBox>
+	                <asp:TextBox ID="TextBox1" CssClass="box textbox" runat="server" Width="180px"></asp:TextBox>
 	            </div>
 	            <div class="label">密 码</div>
 	            <div class="box" id="psw_box">
-	                <asp:TextBox ID="TextBox2" CssClass="box textbox" runat="server"></asp:TextBox>
+	                <asp:TextBox ID="TextBox2" CssClass="box textbox" runat="server" Width="180px"></asp:TextBox>
 	            </div>
 	            <div id="btn_box">
 		            <div id="loginbtn_box" class="btn">
@@ -88,7 +88,6 @@
 		         </div>
 	         </div>
 		</div>
-	    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:clearist %>" SelectCommand="SELECT * FROM [account]"></asp:SqlDataSource>
 	</form>
 </body>
 </html>

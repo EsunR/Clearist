@@ -22,7 +22,7 @@ public partial class login : System.Web.UI.Page
     /// <param name="e"></param>
     protected void Button1_Click(object sender, EventArgs e)
     {
-        string strCon = WebConfigurationManager.ConnectionStrings["clearist"].ConnectionString;
+        string strCon = WebConfigurationManager.ConnectionStrings["account"].ConnectionString;
         SqlConnection con = new SqlConnection(strCon);
         con.Open();
         string sqlString = "select * from account where id = '" + TextBox1.Text + "'";
@@ -33,8 +33,11 @@ public partial class login : System.Web.UI.Page
         {
             if (TextBox2.Text == dr[1].ToString())   //验证密码是否正确
             {
+                //向cookie中写入用户id和uid，设置保存期限为1天
                 Response.Cookies["id"].Value = dr[0].ToString();
+                Response.Cookies["id"].Expires = DateTime.Now.AddDays(1);
                 Response.Cookies["uid"].Value = dr[2].ToString();
+                Response.Cookies["uid"].Expires = DateTime.Now.AddDays(1);
                 Response.Redirect("home.aspx");
             }
             else
@@ -63,7 +66,7 @@ public partial class login : System.Web.UI.Page
                 {
                     string id = TextBox3.Text;
                     string psw = TextBox4.Text;
-                    string strCon = WebConfigurationManager.ConnectionStrings["clearist"].ConnectionString;
+                    string strCon = WebConfigurationManager.ConnectionStrings["account"].ConnectionString;
                     SqlConnection con = new SqlConnection(strCon);
                     //向数据库插入新用户的信息
                     con.Open();
