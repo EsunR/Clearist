@@ -20,10 +20,12 @@
 * uid: 记录者的uid
 * mission: 记录任务的名字
 * start_time: 任务开始时间（默认为建立任务的时间）
-* time_consuming: 任务耗时（自动累计）
-* complete_time: 完成时间
-* mission_id(主键): 任务id
+	* 用Default约束
+* time_consuming: 任务耗时 **[允许NULL]**
+* complete_time: 完成时间 **[允许NULL]**
+* note: 笔记 **[允许NULL]**
 * mark: 标记任务是否完成
+* mission_id(主键): 任务id
 
 
 
