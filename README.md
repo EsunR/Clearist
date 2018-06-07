@@ -1,11 +1,11 @@
-#Clearist
+# Clearist
 参考项目：番茄土豆 & 滴答清单
 
 基于ASP.NET、SQL Server
 ***
 ## 数据库构成
 
-###account表
+### account表
 
 **用来记录用户的账户信息**
 
@@ -13,7 +13,7 @@
 * psw: 记录用户的密码
 * uid(主键): 作为用户的唯一标识，用 IDENTITY(1000,1) 设置为自1000开始的自动填充字段
 
-###mission表
+### mission表
 
 **用来记录用户所记录的任务**
 
