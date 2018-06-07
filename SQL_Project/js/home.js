@@ -4,10 +4,13 @@ $(function(){
 			$("#user_message").fadeToggle();
 		}
 	);
-//	密码验证
-	function psw_verify(){
-		alert("hello!");
-		return false;
-	}
+	
+	$("#user_avatar img").click(function(){
+		$("#psw_box").fadeIn();
+	})
+	
+	$("#psw_cancel").click(function(){
+		$("#psw_box").fadeOut();
+	})
 })
 

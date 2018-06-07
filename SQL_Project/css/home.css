@@ -24,6 +24,7 @@ body{
 }
 #user_avatar img{
 	width: 48px;
+	cursor: pointer;
 }
 #user_message{
 	width: 120px;
@@ -66,6 +67,7 @@ body{
 	margin: auto auto;
 	z-index: 99;
 	overflow: hidden;
+	display: none;
 }
 #psw_box_title{
 	text-align: center;
@@ -102,6 +104,7 @@ body{
 	width: 199px;
 	height: 50px;
 	float: left;
+	cursor: pointer;
 }
 .psw_real_btn{
     font-size: 20px;
@@ -114,6 +117,7 @@ body{
     width: 100%;
     line-height: 50px;
     color: white;
+    cursor: pointer;
 }
 .psw_wrong{
     font-weight: 20px;

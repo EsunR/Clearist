@@ -72,9 +72,19 @@ public partial class login : System.Web.UI.Page
                     con.Open();
                     string sqlString = "insert into account values ('" + id + "','" + psw + "')";
                     SqlCommand com = new SqlCommand(sqlString, con);
-                    com.ExecuteNonQuery();
-                    Response.Write("<script>alert('注册成功！')</script>");
-                    con.Close();
+                    try
+                    {
+                        com.ExecuteNonQuery();
+                        Response.Write("<script>alert('注册成功！')</script>");
+                    }
+                    catch(SqlException ex)
+                    {
+                        Response.Write("<script>alert('改用户名已被占用！')</script>");
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
                 }
                 else
                 {
