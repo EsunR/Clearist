@@ -22,7 +22,7 @@
 * mission: 记录任务的名字
 * start_time: 任务开始时间（默认为建立任务的时间）**[默认/手动添加]**
 > Default约束，默认值为当前系统时间
-
+>
 >		alter table mission
 >		add constraint defalut_start_time default(getdate()) for start_time
 
@@ -31,7 +31,7 @@
 * note: 笔记 **[允许NULL]**
 * mark: 标记任务是否完成 **[默认]**
 > Default约束，默认为“1”
-
+>
 >		alter table mission
 >		add constraint defalut_mark default(1) for mark
 
