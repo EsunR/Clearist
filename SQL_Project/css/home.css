@@ -3,6 +3,16 @@ body{
 	padding: 0;
 	font-family: "微软雅黑";
 }
+ul,li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.MD_card{
+	border-radius: 5px;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+	border: solid 1px rgba(0,0,0,0.2);
+}
 #top_bar{
 	width: 100%;
 	height: 50px;
@@ -180,3 +190,41 @@ body{
 	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 	border-radius: 50px;
 }
+
+/*列表盒子*/
+#list_box{
+	width: 1000px;
+	height: 550px;
+	margin: 0 auto;
+}
+.mission_remind{
+	width: 450px;
+	height: 510px;
+	background: white;
+	float: left;
+	margin-right: 96px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#remind{
+	margin-right: 0;
+}
+.list li{
+	background: rgba(0,0,0,0.05);
+	padding-left: 20px;
+	width: 380px;
+	line-height: 35px;
+	margin: 10px auto;
+	font-size: 16px;
+	border-radius: 5px;
+	border-left: solid 10px #F45147;
+	overflow: hidden;
+}
+.list_button{
+	float: right;
+	margin: 5.5px;
+	position: relative;
+}
+
+
+

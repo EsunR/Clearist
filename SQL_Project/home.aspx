@@ -88,6 +88,29 @@
 			<img class="count_add" src="img/plus-circle.png"/>
 		</div>
 	</div>
+	
+	<!--列表盒子-->
+	<div id="list_box">
+		<div id="mission" class="mission_remind MD_card">
+			<ul class="list">
+				<li>
+					<span class="mission">写作业</span>
+					<img class="checkbox list_button" src="img/check.png" />
+					<img class="timing list_button" src="img/clock-outline.png" />
+					<img class="detail list_button" src="img/list.png" />
+				</li>
+				<li>写实验报告</li>
+				<li>跟女朋友看电影</li>
+			</ul>
+		</div>
+		<div id="remind" class="mission_remind MD_card">
+			<ul class="list">
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
 </form>
 </body>
 </html>
