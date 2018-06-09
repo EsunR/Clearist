@@ -12,6 +12,17 @@ public partial class home : System.Web.UI.Page
 {
     private string id;
     private string uid;
+    private string strCon;
+    private SqlConnection accountCon;
+    private SqlCommand accountCom;
+    private void OpenAccountDB()
+    {
+        strCon = WebConfigurationManager.ConnectionStrings["account"].ConnectionString;
+        accountCon = new SqlConnection(strCon);
+        accountCom = new SqlCommand();
+        accountCom.Connection = accountCon;
+        accountCon.Open();
+    }
     /// <summary>
     /// 初始化页面
     /// </summary>
@@ -24,6 +35,18 @@ public partial class home : System.Web.UI.Page
         uid = Request.Cookies["uid"].Value;
         Label1.Text = id;
         Label2.Text = uid;
+        //获取当前任务数
+        OpenAccountDB();
+        accountCom.CommandText = "select COUNT(*) from mission where uid = " + uid;
+        SqlDataReader missionCountReader = accountCom.ExecuteReader();
+        while (missionCountReader.Read())
+        {
+            count_mission_num.Text = missionCountReader[0].ToString();
+        }
+        missionCountReader.Close();
+        accountCon.Close();
+
+
     }
 
     /// <summary>
@@ -33,7 +56,6 @@ public partial class home : System.Web.UI.Page
     /// <param name="e"></param>
     protected void psw_suer_Click(object sender, EventArgs e)
     {
-        string strCon = WebConfigurationManager.ConnectionStrings["account"].ConnectionString;
         SqlConnection con = new SqlConnection(strCon);
         SqlCommand com = new SqlCommand();
         com.Connection = con;

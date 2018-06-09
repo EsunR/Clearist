@@ -33,11 +33,11 @@ public partial class login : System.Web.UI.Page
         {
             if (TextBox2.Text == dr[1].ToString())   //验证密码是否正确
             {
-                //向cookie中写入用户id和uid，设置保存期限为1天
+                //向cookie中写入用户id和uid，设置保存期限为7天
                 Response.Cookies["id"].Value = dr[0].ToString();
-                Response.Cookies["id"].Expires = DateTime.Now.AddDays(1);
+                Response.Cookies["id"].Expires = DateTime.Now.AddDays(7);
                 Response.Cookies["uid"].Value = dr[2].ToString();
-                Response.Cookies["uid"].Expires = DateTime.Now.AddDays(1);
+                Response.Cookies["uid"].Expires = DateTime.Now.AddDays(7);
                 Response.Redirect("home.aspx");
             }
             else

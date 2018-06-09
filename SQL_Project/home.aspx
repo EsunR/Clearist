@@ -32,9 +32,14 @@
                 return false;
             }
 		}
+        
+      $(document).ready(function(){
+        
+      })
 	</script>
 </head>
 <body>
+<div id="message_box" class="MD_card">默认消息</div>
 <form id="form1" runat="server">
 	<!--顶部栏-->
 	<div id="top_bar">
@@ -79,13 +84,23 @@
 			<div class="count_title">任 务</div>
 			<img class="count_icon" src="img/clipboard-text.png"/>
 			<asp:Label ID="count_mission_num" CssClass="count_num" runat="server" Text="0"></asp:Label>
-			<img class="count_add" src="img/plus-circle.png"/>
+			<div id="clock_box">
+				<div id="clock">
+					<div id="minutes">00</div>
+					<div id="time_spacing">&nbsp;:&nbsp;</div>
+					<div id="seconds">00</div>
+				</div>
+				<div id="clock_button">
+					<img id="play_pause" src="img/pause-circle.png"/>
+					<img id="stop_hide" src="img/stop-circle-outline.png"/>
+					<img id="replay" src="img/replay.png"/>
+				</div>
+			</div>
 		</div>
 		<div class="count_left_right" style="margin-right: 0px;">
 			<div class="count_title">提 醒</div>
 			<img class="count_icon" src="img/calendar-clock.png"/>
 			<asp:Label ID="count_remind_num" CssClass="count_num" runat="server" Text="0"></asp:Label>
-			<img class="count_add" src="img/plus-circle.png"/>
 		</div>
 	</div>
 	
@@ -96,11 +111,24 @@
 				<li>
 					<span class="mission">写作业</span>
 					<img class="checkbox list_button" src="img/check.png" />
-					<img class="timing list_button" src="img/clock-outline.png" />
+					<img class="clock list_button" src="img/clock-outline.png" />
 					<img class="detail list_button" src="img/list.png" />
+					<img class="delete list_button" src="img/delete.png" />
 				</li>
-				<li>写实验报告</li>
-				<li>跟女朋友看电影</li>
+				<li>
+					<span class="mission">打游戏</span>
+					<img class="checkbox list_button" src="img/check.png" />
+					<img class="clock list_button" src="img/clock-outline.png" />
+					<img class="detail list_button" src="img/list.png" />
+					<img class="delete list_button" src="img/delete.png" />
+				</li>
+				<li>
+					<span class="mission">看电影</span>
+					<img class="checkbox list_button" src="img/check.png" />
+					<img class="clock list_button" src="img/clock-outline.png" />
+					<img class="detail list_button" src="img/list.png" />
+					<img class="delete list_button" src="img/delete.png" />
+				</li>
 			</ul>
 		</div>
 		<div id="remind" class="mission_remind MD_card">
