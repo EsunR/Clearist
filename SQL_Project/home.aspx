@@ -9,13 +9,14 @@
 	<link rel="stylesheet" type="text/css" href="css/home.css"/>
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 	<script type="text/javascript" src="js/home.js" ></script>
+	<script src="js/cookieManager.js" type="text/javascript" charset="utf-8"></script>
 	<script>
         //密码验证
         function psw_verify() {
             var old_psw = document.getElementById("<%=old_psw.ClientID%>");
             var new_psw = document.getElementById("<%=new_psw.ClientID%>");
             var re_new_psw = document.getElementById("<%=re_new_psw.ClientID%>");
-            var psw_wrong = document.getElementById("<%=psw_wrong.ClientID%>");
+            var psw_wrong = document.getElementById("<%= psw_wrong.ClientID %>");
 
             if (old_psw.value == "" || new_psw.value == "" || re_new_psw.value == "") {
                 psw_wrong.innerText = "请将信息填写完整！";
@@ -31,11 +32,27 @@
                 psw_wrong.innerText = "新密码不能与原密码相同！";
                 return false;
             }
-		}
-        
-      $(document).ready(function(){
-        
-      })
+        }
+
+        //获取任务or提醒数量，参数为“mission”获取的是任务数量，参数为“remind”获取的是提醒数量
+        var get_count = function (mission_remind) {
+            if (mission_remind == "mission")
+                return <%= count_mission_num.Text %>;
+            else if (mission_remind == "remind")
+                return <%= count_remind_num.Text %>;
+        }
+
+        //获取mission表中的mission字段并存放在一个数组中
+        var get_mission_list = function () {
+            var mission_list_string = "<%= GetMissionList() %>";
+            var mission_list_arr = mission_list_string.split(",");
+            return mission_list_arr;
+        }
+
+        $(document).ready(function () {
+            
+        })
+
 	</script>
 </head>
 <body>
@@ -58,6 +75,7 @@
 				</div>
 			</div>
 		</div>
+		<a id="logout" href="login.aspx">登出</a>
 	</div>
 	<!--修改密码-->
 	<div id="psw_box">
@@ -106,29 +124,16 @@
 	
 	<!--列表盒子-->
 	<div id="list_box">
+        <img class="btn_plus" id="btn_add_mission" src="img/plus-circle.png"/>
 		<div id="mission" class="mission_remind MD_card">
 			<ul class="list">
-				<li>
-					<span class="mission">写作业</span>
+				<!--<li>
+					<span class="mission long_text">Demo</span>
 					<img class="checkbox list_button" src="img/check.png" />
 					<img class="clock list_button" src="img/clock-outline.png" />
 					<img class="detail list_button" src="img/list.png" />
 					<img class="delete list_button" src="img/delete.png" />
-				</li>
-				<li>
-					<span class="mission">打游戏</span>
-					<img class="checkbox list_button" src="img/check.png" />
-					<img class="clock list_button" src="img/clock-outline.png" />
-					<img class="detail list_button" src="img/list.png" />
-					<img class="delete list_button" src="img/delete.png" />
-				</li>
-				<li>
-					<span class="mission">看电影</span>
-					<img class="checkbox list_button" src="img/check.png" />
-					<img class="clock list_button" src="img/clock-outline.png" />
-					<img class="detail list_button" src="img/list.png" />
-					<img class="delete list_button" src="img/delete.png" />
-				</li>
+				</li>-->
 			</ul>
 		</div>
 		<div id="remind" class="mission_remind MD_card">

@@ -3,6 +3,11 @@
 
 基于ASP.NET、SQL Server
 ***
+## Cookie对象
+* id: 用户的ID
+* uid: 用户的UID
+* mission_count: 用户的任务数
+
 ## 数据库构成
 
 ### account表

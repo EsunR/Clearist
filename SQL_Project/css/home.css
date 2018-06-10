@@ -61,6 +61,12 @@ ul,li{
 	color: rgba(0,0,0,0.5);
 	margin-top: 10px;
 }
+#logout{
+	position: absolute;
+	right: 50px;
+	top: 15px;
+	color: white;
+}
 /*网站消息框*/
 #message_box{
 	width: 250px;
@@ -249,26 +255,42 @@ ul,li{
 	width: 1000px;
 	height: 550px;
 	margin: 0 auto;
+    position: relative;
 }
-.mission_remind{
-	width: 450px;
-	height: 510px;
-	background: white;
-	float: left;
-	margin-right: 96px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+.btn_plus{
+    position: absolute;
+    cursor: pointer;
+}
+#btn_add_mission {
+    top: -60px;
+    left: 380px;
+}
+.mission_remind {
+    width: 450px;
+    height: 510px;
+    background: white;
+    float: left;
+    margin-right: 96px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: hidden;
 }
 #remind{
 	margin-right: 0;
 }
+.list span {
+    line-height: 20px;
+    font-size: 15px;
+    width: 240px;
+    display: block;
+    float: left;
+    margin: 8px 0;
+}
 .list li{
-	background: rgba(0,0,0,0.05);
-	padding-left: 20px;
+	background: rgba(0,0,0,0.08);
+	padding-left: 10px;
 	width: 380px;
-	line-height: 35px;
 	margin: 10px auto;
-	font-size: 16px;
 	border-radius: 5px;
 	border-left: solid 10px #F45147;
 	overflow: hidden;

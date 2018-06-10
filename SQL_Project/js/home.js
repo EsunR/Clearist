@@ -1,6 +1,19 @@
 $(function(){
 	var check_flag = 0;	//任务标记
-	var clock_status = 0;	//计时器关闭时为0，开启时为1
+    var clock_status = 0;	//计时器关闭时为0，开启时为1
+
+//  初始化列表
+    var format_list = function (mission_remind) {
+        if (mission_remind == "mission") {
+            var mission_list_attr = get_mission_list();
+            for (var i = 0; i < get_count("mission"); i++) {
+                $("#mission ul").append("<li><span class='mission'>" + mission_list_attr[i] + "</span><img class='checkbox list_button' src='img/check.png' /><img class='clock list_button' src='img/clock-outline.png' /><img class='detail list_button' src='img/list.png' /><img class='delete list_button' src='img/delete.png' /></li >");
+            }
+        }
+    }
+    format_list("mission");
+    
+	
 
 //	消息框函数
 	var messageBox = function(message){

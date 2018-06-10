@@ -15,6 +15,10 @@ public partial class home : System.Web.UI.Page
     private string strCon;
     private SqlConnection accountCon;
     private SqlCommand accountCom;
+
+    /// <summary>
+    /// 连接account表
+    /// </summary>
     private void OpenAccountDB()
     {
         strCon = WebConfigurationManager.ConnectionStrings["account"].ConnectionString;
@@ -37,7 +41,7 @@ public partial class home : System.Web.UI.Page
         Label2.Text = uid;
         //获取当前任务数
         OpenAccountDB();
-        accountCom.CommandText = "select COUNT(*) from mission where uid = " + uid;
+        accountCom.CommandText = "select COUNT(*) from mission where uid = " + uid + "and mark = 1";
         SqlDataReader missionCountReader = accountCom.ExecuteReader();
         while (missionCountReader.Read())
         {
@@ -45,8 +49,6 @@ public partial class home : System.Web.UI.Page
         }
         missionCountReader.Close();
         accountCon.Close();
-
-
     }
 
     /// <summary>
@@ -83,4 +85,33 @@ public partial class home : System.Web.UI.Page
         }
         con.Close();
     }
+
+    /// <summary>
+    /// 获取数据库中的mission字段，并将它们放在一个missionString字符串中，之间以“,”隔开
+    /// </summary>
+    /// <returns></returns>
+    public string GetMissionList()
+    {
+        string missionString = "";
+        //获取当前任务数
+        OpenAccountDB();
+        accountCom.CommandText = "select mission from mission where uid = " + uid + "and mark = 1";
+        SqlDataReader missionListReader = accountCom.ExecuteReader();
+        while (missionListReader.Read())
+        {
+            missionString += missionListReader[0].ToString() + ",";
+        }
+        missionListReader.Close();
+        accountCon.Close();
+        missionString = missionString.TrimEnd(',');//修剪掉最后一个“,”
+        return missionString;
+    }
+
+
+
+
+
+
+
+
 }
