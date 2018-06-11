@@ -46,6 +46,20 @@
 >
 > 		insert into mission (uid,mission) values('1000','这是一个uid为1000的用户创建的一个项目')
 
+**存储过程**
+* add_mission: 新建任务时执行的存储过程
+> 创建语句：
+>
+> 	Create proc add_mission @uid int, @mission nvarchar(50), @note nvarchar(max)
+> 	As
+> 	Begin
+>		insert into mission (uid, mission, note)
+>		values (@uid, @mission, @note)
+> 	End
+> 测试插入：
+>
+> 	exec add_mission '1000', '数据库插入测试', '美妙绝伦！'
+
 
 
 

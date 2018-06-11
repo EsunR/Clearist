@@ -49,6 +49,11 @@
             return mission_list_arr;
         }
 
+        //获取被选中的任务
+        var get_selected_mission = function () {
+            alert(1);
+        }  
+
         $(document).ready(function () {
             
         })
@@ -59,6 +64,8 @@
 <div id="message_box" class="MD_card">默认消息</div>
 <form id="form1" runat="server">
 	<!--顶部栏-->
+    <asp:Button ID="Button1" runat="server" Text="ServerTest" OnClick="Button1_Click" />
+    <input type="button" id="Button2" value="JsTest" />
 	<div id="top_bar">
 		<img src="img/top_bar_logo.png"/>
 		<div id="user_avatar">
@@ -126,6 +133,18 @@
 	<div id="list_box">
         <img class="btn_plus" id="btn_add_mission" src="img/plus-circle.png"/>
 		<div id="mission" class="mission_remind MD_card">
+
+            <div id="add_mission_box" class="add_mission_remind_box">
+                <div class="add_list_tag">任务名称</div>
+                <input class="add_list_text" id="add_mission_name" type="text" value="" runat="server"/>
+                <div class="add_list_tag">备注</div>
+                <input class="add_list_text" id="add_mission_note" type="text" value="" runat="server"/>
+                <div class="add_list_btn_box">
+                    <asp:Button class="add_list_btn_true add_list_btn" ID="add_mission_true" runat="server" Text="确定" OnClick="add_mission_true_Click" />
+                    <div class="add_list_btn_false add_list_btn" id="add_mission_false">取消</div>
+                </div>
+            </div>
+
 			<ul class="list">
 				<!--<li>
 					<span class="mission long_text">Demo</span>

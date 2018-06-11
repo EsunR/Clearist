@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+
 
 public partial class home : System.Web.UI.Page
 {
@@ -108,10 +110,20 @@ public partial class home : System.Web.UI.Page
     }
 
 
+    protected void add_mission_true_Click(object sender, EventArgs e)
+    {
+        string mission_name = add_mission_name.Value;
+        string mission_note = add_mission_note.Value;
+        //添加任务到数据库
+        OpenAccountDB();
+        accountCom.CommandText = "exec add_mission '" + uid + "', '" + mission_name + "', '" + mission_note + "'";
+        accountCom.ExecuteNonQuery();
+        accountCon.Close();
+        Response.Redirect("home.aspx");
+    }
 
-
-
-
-
-
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        
+    }
 }

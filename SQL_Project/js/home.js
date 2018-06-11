@@ -1,6 +1,15 @@
 $(function(){
 	var check_flag = 0;	//任务标记
     var clock_status = 0;	//计时器关闭时为0，开启时为1
+    var mission_selected = new Array();   //任务已完成队列
+    var mission_delete = new Array();   // 任务已删除的队列 
+
+
+
+    //神奇的测试按钮！！！！！！！！！！
+    $("#Button2").click(function () {
+        console.log(mission_selected);
+    })
 
 //  初始化列表
     var format_list = function (mission_remind) {
@@ -9,10 +18,15 @@ $(function(){
             for (var i = 0; i < get_count("mission"); i++) {
                 $("#mission ul").append("<li><span class='mission'>" + mission_list_attr[i] + "</span><img class='checkbox list_button' src='img/check.png' /><img class='clock list_button' src='img/clock-outline.png' /><img class='detail list_button' src='img/list.png' /><img class='delete list_button' src='img/delete.png' /></li >");
             }
+            var i = 0;
+            $(".mission").each(function () {
+                this.queue = i; //任务的队列
+                this.mark = 1;  //未完成标记为1，已完成标记为0，删除标记为2
+                i++;
+            })
         }
     }
     format_list("mission");
-    
 	
 
 //	消息框函数
@@ -42,21 +56,31 @@ $(function(){
 	for(var i = 0; i<aCheckbox.length; i++){
 		aCheckbox[i].check_flag = 0;
 	}
-	$("#list_box .checkbox").click(function(){
+    $("#list_box .checkbox").click(function () {
+        var oMission = $(this).prev(".mission")[0];
 		if(this.check_flag == 0){
 			this.src = "img/checked.png"
 			this.check_flag = 1;
 			$(this).prev("span").css({textDecoration:"line-through", color:"rgba(0,0,0,0.5)"});
 			$(this).nextAll("img").animate({top: "-35px"}, 400)
-			$(this).parent().css("border-left","solid 10px rgba(0,0,0,0.2)")
+            $(this).parent().css("border-left", "solid 10px rgba(0,0,0,0.2)")
+            $(this).prev(".mission")[0].mark = 0;   //将.mission标签mark标记为已完成（0）
 		}
 		else{
 			this.src = "img/check.png";
 			this.check_flag = 0;
 			$(this).prev("span").css({textDecoration:"none", color:"black"});
 			$(this).nextAll("img").animate({top: "0px"}, 400)
-			$(this).parent().css("border-left","solid 10px #F45147")
-		}
+            $(this).parent().css("border-left", "solid 10px #F45147")
+            $(this).prev(".mission")[0].mark = 1;   //将.mission标签mark标记为未完成（1）
+        }
+        //将选择的任务添加或删除到mission_select数组中
+        if (oMission.mark == 0) {
+            mission_selected.push(oMission.queue);
+        }
+        else {
+            
+        }
 	})
 
 //	时钟按钮
@@ -158,8 +182,53 @@ $(function(){
 	var time_pause = function(){
 		clearInterval(start);
 	}
-	
 
+    //鼠标移动到“添加”按钮的动画
+    var add_list_open = 0;
+    $("#btn_add_mission").hover(function () {
+        if (add_list_open == 0)
+            $("#add_mission_box").css("z-index","-1").animate({ "left": "-20px" }, 200);
+    }, function () {
+        if (add_list_open == 0) {
+            $("#add_mission_box").animate({ "left": "15px" }, 200);
+        }
+    })
+    //鼠标点击“添加”按钮的动画
+    $("#btn_add_mission").click(function () {
+        if (add_list_open == 0) {
+            $("#add_mission_box").animate({ "left": "-470px" }, 500);
+            setTimeout(function () {
+                $("#add_mission_box").css("z-index", "2").animate({ "left": "15px" }, 500);
+            }, 500)
+            add_list_open = 1;
+        }
+        else {
+            $("#add_mission_box").animate({ "left": "-470px" }, 500);
+            setTimeout(function () {
+                $("#add_mission_box").css("z-index", "-1").animate({ "left": "15px" }, 500);
+            }, 500);
+            add_list_open = 0;
+        }
+        $(".add_list_text").each(function () {
+            $(this).val("");
+        });
+    })
+    //点击“取消”按钮
+    $("#add_mission_false").click(function () {
+        $("#add_mission_box").animate({ "left": "-470px" }, 500);
+        setTimeout(function () {
+            $("#add_mission_box").css("z-index", "-1").animate({ "left": "15px" }, 500);
+        }, 500);
+        add_list_open = 0;
+    })
+    //点击“确定”按钮
+    $("#add_mission_true").click(function () {
+        $("#add_mission_box").animate({ "left": "-470px" }, 500);
+        setTimeout(function () {
+            $("#add_mission_box").css("z-index", "-1").animate({ "left": "15px" }, 500);
+        }, 500);
+        add_list_open = 0;
+    })
 	
 })
 
