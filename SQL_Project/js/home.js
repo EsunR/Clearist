@@ -2,7 +2,10 @@ $(function(){
 	var check_flag = 0;	//任务标记
     var clock_status = 0;	//计时器关闭时为0，开启时为1
     var mission_selected = new Array();   //任务已完成队列
-    var mission_delete = new Array();   // 任务已删除的队列 
+    var mission_id_queue = ger_mission_id_queue();  //获取当前的任务id队列，用于删除按钮调用记录删除的任务
+    var mission_count = get_count("mission");   //获取任务数
+    //setCookie("mission_selected", "", 7);   //初始化cookie中mission_selected的
+    
 
 
 
@@ -15,19 +18,21 @@ $(function(){
     var format_list = function (mission_remind) {
         if (mission_remind == "mission") {
             var mission_list_attr = get_mission_list();
-            for (var i = 0; i < get_count("mission"); i++) {
+            for (var i = 0; i < mission_count; i++) {
                 $("#mission ul").append("<li><span class='mission'>" + mission_list_attr[i] + "</span><img class='checkbox list_button' src='img/check.png' /><img class='clock list_button' src='img/clock-outline.png' /><img class='detail list_button' src='img/list.png' /><img class='delete list_button' src='img/delete.png' /></li >");
             }
             var i = 0;
             $(".mission").each(function () {
                 this.queue = i; //任务的队列
                 this.mark = 1;  //未完成标记为1，已完成标记为0，删除标记为2
+                this.mission_id = mission_id_queue[i];
+                console.log(this.queue + "=" + this.mission_id);
                 i++;
             })
         }
     }
     format_list("mission");
-	
+
 
 //	消息框函数
 	var messageBox = function(message){
@@ -76,11 +81,16 @@ $(function(){
         }
         //将选择的任务添加或删除到mission_select数组中
         if (oMission.mark == 0) {
-            mission_selected.push(oMission.queue);
+            mission_selected.push(oMission.mission_id);
         }
-        else {
-            
+        else if (oMission.mark == 1) {
+            for (var i = 0; i < mission_selected.length; i++) {
+                if (mission_selected[i] == oMission.mission_id)
+                    mission_selected.splice(i, 1);
+            }
         }
+        var mission_selected_string = mission_selected.join();
+        setCookie("mission_selected", "1001,2001,3002", 7);
 	})
 
 //	时钟按钮
@@ -183,6 +193,15 @@ $(function(){
 		clearInterval(start);
 	}
 
+//  删除按钮
+    $("#list_box .delete").click(function () {
+        var mission_delete = $(this).siblings(".mission")[0].mission_id;
+        setCookie("mission_delete", mission_delete, 7);
+        mission_count--;
+        window.location.replace("home.aspx");
+    })
+
+//  添加按钮
     //鼠标移动到“添加”按钮的动画
     var add_list_open = 0;
     $("#btn_add_mission").hover(function () {
@@ -228,6 +247,11 @@ $(function(){
             $("#add_mission_box").css("z-index", "-1").animate({ "left": "15px" }, 500);
         }, 500);
         add_list_open = 0;
+        if ($("#add_mission_name").val() == "") {
+            return false;
+        }
+        else
+            return true;
     })
 	
 })

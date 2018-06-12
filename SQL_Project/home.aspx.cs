@@ -41,6 +41,7 @@ public partial class home : System.Web.UI.Page
         uid = Request.Cookies["uid"].Value;
         Label1.Text = id;
         Label2.Text = uid;
+
         //获取当前任务数
         OpenAccountDB();
         accountCom.CommandText = "select COUNT(*) from mission where uid = " + uid + "and mark = 1";
@@ -48,9 +49,39 @@ public partial class home : System.Web.UI.Page
         while (missionCountReader.Read())
         {
             count_mission_num.Text = missionCountReader[0].ToString();
+            Response.Cookies["mission_count"].Value = missionCountReader[0].ToString();
+            Response.Cookies["mission_count"].Expires = DateTime.Now.AddDays(7);
         }
         missionCountReader.Close();
         accountCon.Close();
+
+
+        //假如重载页面有删除操作，就在页面加载时删除该项
+        int mission_delete = int.Parse(Request.Cookies["mission_delete"].Value);
+        if(mission_delete != 0)
+        {
+            OpenAccountDB();
+            accountCom.CommandText = "update mission set mark = 2 where mission_id = " + mission_delete;
+            accountCom.ExecuteReader();
+            accountCon.Close();
+            //因为该步的操作是读取cookie后再删库，导致cookie中的mission_count值比实际的任务数会多1
+            //所以要重新写入cookie，再重置count_mission_num显示的数字
+            OpenAccountDB();
+            accountCom.CommandText = "select COUNT(*) from mission where uid = " + uid + "and mark = 1";
+            SqlDataReader Re_missionCountReader = accountCom.ExecuteReader();
+            while (Re_missionCountReader.Read())
+            {
+                count_mission_num.Text = Re_missionCountReader[0].ToString();
+                Response.Cookies["mission_count"].Value = Re_missionCountReader[0].ToString();
+                Response.Cookies["mission_count"].Expires = DateTime.Now.AddDays(7);
+            }
+            Re_missionCountReader.Close();
+            Response.Cookies["mission_delete"].Value = "0";    //重置删除操作
+            Response.Cookies["mission_delete"].Expires = DateTime.Now.AddDays(7);
+        }
+        
+
+
     }
 
     /// <summary>
@@ -109,6 +140,23 @@ public partial class home : System.Web.UI.Page
         return missionString;
     }
 
+    public string GetMissionIdQueue()
+    {
+        string mission_id_queue = "";
+        //获取当前任务数
+        OpenAccountDB();
+        accountCom.CommandText = "select mission_id from mission where uid = " + uid + "and mark = 1";
+        SqlDataReader missionListReader = accountCom.ExecuteReader();
+        while (missionListReader.Read())
+        {
+            mission_id_queue += missionListReader[0].ToString() + ",";
+        }
+        missionListReader.Close();
+        accountCon.Close();
+        mission_id_queue = mission_id_queue.TrimEnd(',');//修剪掉最后一个“,”
+        return mission_id_queue;
+    }
+
 
     protected void add_mission_true_Click(object sender, EventArgs e)
     {
@@ -122,8 +170,15 @@ public partial class home : System.Web.UI.Page
         Response.Redirect("home.aspx");
     }
 
+    /// <summary>
+    /// 读取cookie
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void Button1_Click(object sender, EventArgs e)
     {
-        
+        string aaa;
+        aaa = Request.Cookies["mission_selected"].ToString();
+        Response.Write("<script>alert('" + aaa + "')</script>");
     }
 }

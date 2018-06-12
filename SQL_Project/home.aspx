@@ -37,9 +37,9 @@
         //获取任务or提醒数量，参数为“mission”获取的是任务数量，参数为“remind”获取的是提醒数量
         var get_count = function (mission_remind) {
             if (mission_remind == "mission")
-                return <%= count_mission_num.Text %>;
+                return getCookie("mission_count");
             else if (mission_remind == "remind")
-                return <%= count_remind_num.Text %>;
+                return getCookie("mission_count");
         }
 
         //获取mission表中的mission字段并存放在一个数组中
@@ -49,10 +49,12 @@
             return mission_list_arr;
         }
 
-        //获取被选中的任务
-        var get_selected_mission = function () {
-            alert(1);
-        }  
+        //获取mission表中未完成的mission id并存放在一个数组中
+        var ger_mission_id_queue = function () {
+            var mission_id_queue_string = "<%= GetMissionIdQueue() %>";
+            var mission_id_queue_arr = mission_id_queue_string.split(",");
+            return mission_id_queue_arr;
+        }
 
         $(document).ready(function () {
             
@@ -108,7 +110,7 @@
 		<div class="count_left_right">
 			<div class="count_title">任 务</div>
 			<img class="count_icon" src="img/clipboard-text.png"/>
-			<asp:Label ID="count_mission_num" CssClass="count_num" runat="server" Text="0"></asp:Label>
+            <asp:Label ID="count_mission_num" CssClass="count_num" runat="server" Text="0"></asp:Label>
 			<div id="clock_box">
 				<div id="clock">
 					<div id="minutes">00</div>
@@ -132,8 +134,8 @@
 	<!--列表盒子-->
 	<div id="list_box">
         <img class="btn_plus" id="btn_add_mission" src="img/plus-circle.png"/>
-		<div id="mission" class="mission_remind MD_card">
-
+		<div id="mission" class="mission_remind MD_card" style="overflow:scroll">
+            <!--添加任务-->
             <div id="add_mission_box" class="add_mission_remind_box">
                 <div class="add_list_tag">任务名称</div>
                 <input class="add_list_text" id="add_mission_name" type="text" value="" runat="server"/>

@@ -39,6 +39,9 @@ public partial class login : System.Web.UI.Page
                 Response.Cookies["uid"].Value = dr[2].ToString();
                 Response.Cookies["uid"].Expires = DateTime.Now.AddDays(7);
                 Response.Redirect("home.aspx");
+                //初始化删除任务（当cookie中mission_delete的值为0时，表示数据刷新前没有进行删除操作）
+                Response.Cookies["mission_delete"].Value = "0";
+                Response.Cookies["mission_delete"].Expires = DateTime.Now.AddDays(7);
             }
             else
             {
