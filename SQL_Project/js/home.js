@@ -4,7 +4,6 @@ $(function(){
     var mission_selected = new Array();   //任务已完成队列
     var mission_id_queue = ger_mission_id_queue();  //获取当前的任务id队列，用于删除按钮调用记录删除的任务
     var mission_count = get_count("mission");   //获取任务数
-    //setCookie("mission_selected", "", 7);   //初始化cookie中mission_selected的
     
 
 
@@ -19,7 +18,7 @@ $(function(){
         if (mission_remind == "mission") {
             var mission_list_attr = get_mission_list();
             for (var i = 0; i < mission_count; i++) {
-                $("#mission ul").append("<li><span class='mission'>" + mission_list_attr[i] + "</span><img class='checkbox list_button' src='img/check.png' /><img class='clock list_button' src='img/clock-outline.png' /><img class='detail list_button' src='img/list.png' /><img class='delete list_button' src='img/delete.png' /></li >");
+                $("#mission ul").append("<li><span class='mission'>" + mission_list_attr[i] + "</span><img class='checkbox list_button' src='img/check.png' /><img class='clock list_button' src='img/clock-outline.png' /><img class='delete list_button' src='img/delete.png' /></li >");
             }
             var i = 0;
             $(".mission").each(function () {
@@ -90,7 +89,7 @@ $(function(){
             }
         }
         var mission_selected_string = mission_selected.join();
-        setCookie("mission_selected", "1001,2001,3002", 7);
+        setCookie("mission_selected", mission_selected_string, 7);
 	})
 
 //	时钟按钮
@@ -199,6 +198,27 @@ $(function(){
         setCookie("mission_delete", mission_delete, 7);
         mission_count--;
         window.location.replace("home.aspx");
+    })
+
+//  点击任务列表显示详细信息
+    var mission_detailed_mode = "default"
+    $("#mission .mission").click(function () {
+        setCookie("detailed", $(this)[0].mission_id);   //写入cookie记录当前选择的任务id
+        if (mission_detailed_mode == "default") {
+            mission_detailed_mode = "active"
+            $("#detailed_mission").css({ "right": "0px", "display": "none" });
+            $("#detailed_mission").fadeIn(500);
+            //局部刷新页面更新数据
+            $("#detailed_mission").load("/detailed.aspx", function () { })
+        }
+        else {
+            $("#detailed_mission").animate({ "right": "-450px", "display": "none" }, 400)
+                .animate({ "right": "0px", "display": "block" }, 400);
+            //局部刷新页面更新数据（为配合动画做一定的延时）
+            setTimeout(function () {
+                $("#detailed_mission").load("/detailed.aspx", function () { })
+            }, 400)
+        }
     })
 
 //  添加按钮

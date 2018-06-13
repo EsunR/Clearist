@@ -152,17 +152,18 @@
 					<span class="mission long_text">Demo</span>
 					<img class="checkbox list_button" src="img/check.png" />
 					<img class="clock list_button" src="img/clock-outline.png" />
-					<img class="detail list_button" src="img/list.png" />
 					<img class="delete list_button" src="img/delete.png" />
 				</li>-->
 			</ul>
 		</div>
 		<div id="remind" class="mission_remind MD_card">
-			<ul class="list">
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
+			<div id="detailed_default" class="detailed">
+                <img id="detailed_default_img" src="img/detailed.png" />
+			    <div id="detailed_default_tag">点击左侧列表以显示<br/>详细信息</div>
+            </div>
+            <div id="detailed_mission" class="detailed">
+                详细页面
+			</div>
 		</div>
 	</div>
 </form>

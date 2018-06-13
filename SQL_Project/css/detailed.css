@@ -1,0 +1,31 @@
+﻿*{
+    outline: none;
+}
+#mission_detailed_box {
+    width: 450px;
+    height: 510px;
+    margin: 0 auto;
+    border: 1px solid #000000;
+}
+.title{
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: rgba(0,0,0,0.5);
+    font-weight: bold;
+}
+.text_box{
+    display: block;
+    height: 30px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: 2px solid rgba(0,0,0,0.5);
+    padding: 0 10px;
+    line-height: 30px;
+}
+.text_box_click {
+    border: 2px solid #F45147 !important;
+}

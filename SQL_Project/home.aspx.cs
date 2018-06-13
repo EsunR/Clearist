@@ -42,6 +42,42 @@ public partial class home : System.Web.UI.Page
         Label1.Text = id;
         Label2.Text = uid;
 
+        
+
+
+        //假如重载页面有删除操作，就在页面加载时删除该项
+        int mission_delete = int.Parse(Request.Cookies["mission_delete"].Value);
+        if(mission_delete != 0)
+        {
+            //改变数据库中的任务标记
+            OpenAccountDB();
+            accountCom.CommandText = "update mission set mark = 2 where mission_id = " + mission_delete;
+            accountCom.ExecuteReader();
+            accountCon.Close();
+
+            Response.Cookies["mission_delete"].Value = "0";    //重置删除操作
+            Response.Cookies["mission_delete"].Expires = DateTime.Now.AddDays(7);
+        }
+
+        //假如重载页前有选择操作，就在页面新页面加载时对任务状态进行更改
+        string mission_selected_string = Request.Cookies["mission_selected"].Value;
+        string[] mission_selected = mission_selected_string.Split(new Char[] { ',' });  //mission_selected为一个数组，记录着已标记为完成的任务的mission_id队列
+        if (mission_selected_string != "")
+        {
+            //改变数据库中的任务标记
+            for (int i = 0; i < mission_selected.Length; i++)
+            {
+                OpenAccountDB();
+                accountCom.CommandText = "update mission set mark = 0 where mission_id = " + int.Parse(mission_selected[i]);
+                accountCom.ExecuteReader();
+                accountCon.Close();
+            }
+
+            Response.Cookies["mission_selected"].Value = "";    //重置选择操作
+            Response.Cookies["mission_selected"].Expires = DateTime.Now.AddDays(7);
+            
+        }
+
         //获取当前任务数
         OpenAccountDB();
         accountCom.CommandText = "select COUNT(*) from mission where uid = " + uid + "and mark = 1";
@@ -55,34 +91,9 @@ public partial class home : System.Web.UI.Page
         missionCountReader.Close();
         accountCon.Close();
 
-
-        //假如重载页面有删除操作，就在页面加载时删除该项
-        int mission_delete = int.Parse(Request.Cookies["mission_delete"].Value);
-        if(mission_delete != 0)
-        {
-            OpenAccountDB();
-            accountCom.CommandText = "update mission set mark = 2 where mission_id = " + mission_delete;
-            accountCom.ExecuteReader();
-            accountCon.Close();
-            //因为该步的操作是读取cookie后再删库，导致cookie中的mission_count值比实际的任务数会多1
-            //所以要重新写入cookie，再重置count_mission_num显示的数字
-            OpenAccountDB();
-            accountCom.CommandText = "select COUNT(*) from mission where uid = " + uid + "and mark = 1";
-            SqlDataReader Re_missionCountReader = accountCom.ExecuteReader();
-            while (Re_missionCountReader.Read())
-            {
-                count_mission_num.Text = Re_missionCountReader[0].ToString();
-                Response.Cookies["mission_count"].Value = Re_missionCountReader[0].ToString();
-                Response.Cookies["mission_count"].Expires = DateTime.Now.AddDays(7);
-            }
-            Re_missionCountReader.Close();
-            Response.Cookies["mission_delete"].Value = "0";    //重置删除操作
-            Response.Cookies["mission_delete"].Expires = DateTime.Now.AddDays(7);
-        }
-        
-
-
     }
+
+
 
     /// <summary>
     /// 修改密码“确定”按钮
@@ -171,14 +182,13 @@ public partial class home : System.Web.UI.Page
     }
 
     /// <summary>
-    /// 读取cookie
+    /// 神奇的测试按钮
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     protected void Button1_Click(object sender, EventArgs e)
     {
-        string aaa;
-        aaa = Request.Cookies["mission_selected"].ToString();
-        Response.Write("<script>alert('" + aaa + "')</script>");
+        string mission_selected_string = Request.Cookies["mission_selected"].Value;
+        string[] mission_selected = mission_selected_string.Split(new Char[] { ',' });
     }
 }
