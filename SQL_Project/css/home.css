@@ -401,3 +401,71 @@ input{
     background: white;
 }
 
+/*功能按钮*/
+#function_box_position {
+    width: 1000px;
+    height: 10px;
+    margin: 10px auto;
+    position: relative;
+}
+#function_btn_box {
+    width: 150px;
+    height: 170px;
+    position: absolute;
+    top: -180px;
+    right: -170px;
+}
+.function_btn {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    border-radius: 70px;
+    cursor: pointer;
+}
+.function_btn:hover{
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+#refresh{
+    background: #F45147;
+    z-index: 3;
+    position: relative;
+}
+#completed {
+    background: #22a8f0;
+    z-index: 2;
+    position: relative;
+    top: 60px;  /*显示为0*/
+    opacity: 0;
+}
+#trash {
+    background: #757575;
+    z-index: 1;
+    position: relative;
+    top: 120px; /*显示为0*/
+    opacity: 0;
+}
+#function_btn_box img{
+    margin: 10px;
+}
+#function_btn_box span{
+    position: relative;
+    top: -40px;
+    left: 60px;
+    font-size: 18px;
+    display: block;
+    width: 200px;
+    font-weight: bold;
+    display: none;
+}
+#trash span{
+    color: #757575;
+}
+#completed span{
+    color: #22a8f0;
+}
+#refresh span{
+    color: #F45147;
+}
+
+
+

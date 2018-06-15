@@ -272,6 +272,27 @@ $(function(){
         else
             return true;
     })
-	
+
+    //功能按钮动画
+    $("#refresh").mouseover(function () {
+        $("#function_btn_box span").css("display", "block");
+        $("#completed").animate({ "opacity": "1", "top": "0"}, 250);
+        $("#trash").animate({ "opacity": "1", "top": "0"}, 500);
+    })
+    $("#function_btn_box").mouseleave(function () {
+        $("#trash").animate({ "opacity": "0", "top": "120" }, 500);
+        $("#completed").animate({ "opacity": "0", "top": "60" }, 250);
+        $("#function_btn_box span").css("display", "none");
+    })
+    $("#refresh").click(function () {
+        window.location.replace("home.aspx");
+    })
+    $("#trash").click(function () {
+        window.location.replace("trash.aspx");
+    })
+    $("#completed").click(function () {
+        window.location.replace("completed.aspx");
+    })
+
 })
 

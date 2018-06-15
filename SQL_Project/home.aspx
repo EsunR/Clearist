@@ -66,8 +66,10 @@
 <div id="message_box" class="MD_card">默认消息</div>
 <form id="form1" runat="server">
 	<!--顶部栏-->
+    <!--
     <asp:Button ID="Button1" runat="server" Text="ServerTest" OnClick="Button1_Click" />
     <input type="button" id="Button2" value="JsTest" />
+    -->
 	<div id="top_bar">
 		<img src="img/top_bar_logo.png"/>
 		<div id="user_avatar">
@@ -166,6 +168,15 @@
 			</div>
 		</div>
 	</div>
+
+    <!--功能按钮-->
+    <div id="function_box_position">
+    <div id="function_btn_box">
+        <div id="trash" class="function_btn"><img src="img/delete-empty.png"/><span>垃圾箱</span></div>
+        <div id="completed" class="function_btn"><img src="img/book-open.png"/><span>已完成任务</span></div>
+        <div id="refresh" class="function_btn"><img src="img/refresh.png"/><span>刷新</span></div>
+    </div>
+    </div>
 </form>
 </body>
 </html>

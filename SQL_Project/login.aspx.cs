@@ -56,6 +56,12 @@ public partial class login : System.Web.UI.Page
                 //初始化删除子任务列表
                 Response.Cookies["subtasks_delete"].Value = "";
                 Response.Cookies["subtasks_delete"].Expires = DateTime.Now.AddDays(7);
+                //初始化还原任务列表
+                Response.Cookies["mission_backup"].Value = "";
+                Response.Cookies["mission_backup"].Expires = DateTime.Now.AddDays(7);
+                //初始彻底删除原任务列表
+                Response.Cookies["mission_delete_forever"].Value = "";
+                Response.Cookies["mission_delete_forever"].Expires = DateTime.Now.AddDays(7);
                 //页面重定向
                 Response.Redirect("home.aspx");
             }

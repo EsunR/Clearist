@@ -137,7 +137,6 @@ public partial class home : System.Web.UI.Page
     public string GetMissionList()
     {
         string missionString = "";
-        //获取当前任务数
         OpenAccountDB();
         accountCom.CommandText = "select mission from mission where uid = " + uid + "and mark = 1";
         SqlDataReader missionListReader = accountCom.ExecuteReader();
