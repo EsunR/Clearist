@@ -134,7 +134,7 @@
 	<!--列表盒子-->
 	<div id="list_box">
         <img class="btn_plus" id="btn_add_mission" src="img/plus-circle.png"/>
-		<div id="mission" class="mission_remind MD_card" style="overflow:scroll">
+		<div id="mission" class="mission_remind MD_card" style="overflow:auto;overflow-x: hidden;">
             <!--添加任务-->
             <div id="add_mission_box" class="add_mission_remind_box">
                 <div class="add_list_tag">任务名称</div>

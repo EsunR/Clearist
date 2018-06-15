@@ -203,13 +203,12 @@ $(function(){
 //  点击任务列表显示详细信息
     var mission_detailed_mode = "default"
     $("#mission .mission").click(function () {
-        setCookie("detailed", $(this)[0].mission_id);   //写入cookie记录当前选择的任务id
+        setCookie("detailed", $(this)[0].mission_id, 7);   //写入cookie记录当前选择的任务id
         if (mission_detailed_mode == "default") {
             mission_detailed_mode = "active"
-            $("#detailed_mission").css({ "right": "0px", "display": "none" });
-            $("#detailed_mission").fadeIn(500);
             //局部刷新页面更新数据
             $("#detailed_mission").load("/detailed.aspx", function () { })
+            $("#detailed_mission").animate({ "right": "0px", "display": "block" }, 400);
         }
         else {
             $("#detailed_mission").animate({ "right": "-450px", "display": "none" }, 400)

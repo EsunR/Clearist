@@ -37,8 +37,19 @@ public partial class detailed : System.Web.UI.Page
         {
             md_name.Text = DataReader[1].ToString();
             md_note.Text = DataReader[5].ToString();
+            time_cost_num.Text = DataReader[3].ToString();
+            start_time_num.Text = DataReader[2].ToString();
         }
         DataReader.Close();
         accountCon.Close();
+    }
+
+    protected void detailed_apply_Click(object sender, EventArgs e)
+    {
+
+        OpenAccountDB();
+        
+        Response.Cookies["new_subtasks"].Value = "";
+        Response.Redirect("/home.aspx");
     }
 }

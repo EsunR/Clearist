@@ -44,6 +44,9 @@ public partial class login : System.Web.UI.Page
                 //初始化详细任务
                 Response.Cookies["detailed"].Value = "0";
                 Response.Cookies["detailed"].Expires = DateTime.Now.AddDays(7);
+                //初始化新建子任务列表
+                Response.Cookies["new_subtasks"].Value = "";
+                Response.Cookies["new_subtasks"].Expires = DateTime.Now.AddDays(7);
                 //页面重定向
                 Response.Redirect("home.aspx");
             }

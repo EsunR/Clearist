@@ -3,9 +3,12 @@
 }
 #mission_detailed_box {
     width: 450px;
-    height: 510px;
+    height: 550px;
     margin: 0 auto;
-    border: 1px solid #000000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+#detailed_top{
+    height: 20px;
 }
 .title{
     display: block;
@@ -17,15 +20,121 @@
 }
 .text_box{
     display: block;
-    height: 30px;
+    height: 25px;
+    width: 330px;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 16px;
-    border-radius: 20px;
+    border-radius: 10px;
     border: 2px solid rgba(0,0,0,0.5);
     padding: 0 10px;
-    line-height: 30px;
+    line-height: 25px;
 }
 .text_box_click {
     border: 2px solid #F45147 !important;
+}
+#subtasks_box ul{
+    display: block;
+    border: 2px solid rgba(0,0,0,0.4);
+    width: 350px;
+    height: 100px;
+    margin: 0 auto;
+    overflow: auto;
+    overflow-x: hidden;
+    border-radius: 10px;
+}
+#add_subtasks{
+    width: 350px;
+    margin: 20px auto;
+}
+#subtasks_box ul{
+    padding: 0;
+}
+#subtasks_box li {
+    list-style: none;
+    padding: 0 10px;
+    margin: 2px;
+    color: rgba(0,0,0,0.7);
+    border-radius: 5px;
+    height: 22px;
+    line-height: 22px;
+
+}
+#subtasks_box li:hover {
+    background: #F45147;
+    color: white;
+}
+#subtasks_tb {
+    width: 271px;
+    height: 25px;
+    border-radius: 10px;
+    border: 2px solid rgba(0,0,0,0.5);
+    font-size: 16px;
+    padding: 0 10px;
+}
+#subtasks_btn {
+    width: 50px;
+    height: 30px;
+    background: none;
+    border: 2px solid #F45147;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #F45147;
+}
+#subtasks_btn:hover {
+    background: #F45147;
+    color: white;
+}
+#detailed_bottom {
+    width: 450px;
+    height: 140px;
+    margin-top: 10px;
+}
+#time_cost, #start_time{
+    background: rgba(0,0,0,0.1);
+    width: 354px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.detailed_bottom_label{
+    display: block;
+    width: 70px;
+    padding: 0 20px;
+    background: #F45147;
+    height: 30px;
+    text-align: center;
+    float: left;
+    color: white;
+    border-radius: 10px 0 0 10px;
+    border-right: 5px solid white;
+}
+.detailed_bottom_num{
+    float: right;
+    display: block;
+    width: 234px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(128, 128, 128);
+}
+#detailed_apply{
+    background: white;
+    font-size: 18px;
+    border: 2px solid #F45147;
+    display: block;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+    color: #F45147;
+    font-weight: bold;
+}
+#detailed_apply:hover{
+    background: #F45147;
+    color: white;
 }

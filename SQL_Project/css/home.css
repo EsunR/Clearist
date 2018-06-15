@@ -280,6 +280,8 @@ input{
 }
 #remind{
 	margin-right: 0;
+    padding: 0px;
+    height: 550px;
 }
 .list span {
     line-height: 20px;
