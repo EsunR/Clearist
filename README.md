@@ -38,28 +38,28 @@
 * start_time: 任务开始时间（默认为建立任务的时间）**[默认/手动添加]**
 > Default约束，默认值为当前系统时间
 >
-> 	alter table mission
-> 	add constraint defalut_start_time default(getdate()) for start_time
+> 		alter table mission
+> 		add constraint defalut_start_time default(getdate()) for start_time
 
 * time_consuming: 任务耗时 **[默认]**
 > Default约束，默认时间为00:00:00.000000
 >
-> 	alter table mission
-> 	add constraint defalut_time_consuming default('00:00:00') for time_consuming
+> 		alter table mission
+> 		add constraint defalut_time_consuming default('00:00:00') for time_consuming
 
 * complete_time: 完成时间 **[允许NULL]**
 * note: 笔记 **[允许NULL]**
 * mark: 标记任务是否完成 **[默认]**
 > Default约束，默认为“1”
 >
-> 	alter table mission
-> 	add constraint defalut_mark default(1) for mark
+> 		alter table mission
+> 		add constraint defalut_mark default(1) for mark
 
 * mission_id(主键): 任务id **[默认]**
 
 > 测试插入数据：
 >
-> 	insert into mission (uid,mission) values('1000','这是一个uid为1000的用户创建的一个项目')
+>		insert into mission (uid,mission) values('1000','这是一个uid为1000的用户创建的一个项目')
 
 
 
@@ -70,12 +70,12 @@
 ### 用来记录子任务
 > 创建脚本
 >
-> 	CREATE TABLE subtasks  
-> 	(  
-> 		mission_id int,
-> 		subtasks nvarchar(50),
-> 		subtasks_id int IDENTITY(1,1)
-> 	)
+>		CREATE TABLE subtasks  
+>		(  
+>			mission_id int,
+>			subtasks nvarchar(50),
+>			subtasks_id int IDENTITY(1,1)
+>		)
 
 * mission_id: 该条子任务属于的主任务id
 * subtasks: 子任务内容
@@ -92,32 +92,32 @@
 * add_mission: 新建任务时执行的存储过程
 > 创建语句：
 >
-> 	Create proc add_mission @uid int, @mission nvarchar(50), @note nvarchar(max)
-> 	As
-> 	Begin
->		insert into mission (uid, mission, note)
->		values (@uid, @mission, @note)
-> 	End
+>		Create proc add_mission @uid int, @mission nvarchar(50), @note nvarchar(max)
+>		As
+>		Begin
+>			insert into mission (uid, mission, note)
+>			values (@uid, @mission, @note)
+>		End
 >
 > 测试插入：
 >
-> 	exec add_mission '1000', '数据库插入测试', '美妙绝伦！'
+>		exec add_mission '1000', '数据库插入测试', '美妙绝伦！'
 
 
 
 * add_subtasks: 创建子任务时执行的存储过程
 > 创建语句:
 >
->	 Create proc add_subtasks @mission_id int, @subtasks nvarchar(50)
->	 As
->	 Begin
->    	insert into subtasks (mission_id, subtasks)
->  	  values (@mission_id, @subtasks)
-> 	End
+>		Create proc add_subtasks @mission_id int, @subtasks nvarchar(50)
+>		As
+>		Begin
+>		insert into subtasks (mission_id, subtasks)
+>		values (@mission_id, @subtasks)
+>		End
 >
 > 测试插入
 > 
-> 	exec add_subtasks '1078', '子任务'
+>		exec add_subtasks '1078', '子任务'
 
 
 ## 触发器
