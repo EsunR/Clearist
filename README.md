@@ -103,21 +103,34 @@
 >
 >		exec add_mission '1000', '数据库插入测试', '美妙绝伦！'
 
-
-
 * add_subtasks: 创建子任务时执行的存储过程
 > 创建语句:
 >
 >		Create proc add_subtasks @mission_id int, @subtasks nvarchar(50)
 >		As
->		Begin
->		insert into subtasks (mission_id, subtasks)
->		values (@mission_id, @subtasks)
+>			Begin
+>			insert into subtasks (mission_id, subtasks)
+>			values (@mission_id, @subtasks)
 >		End
 >
 > 测试插入
 > 
 >		exec add_subtasks '1078', '子任务'
+
+* alter_mission: 更改任务信息
+> 创建语句:
+>
+>		Create proc alter_mission @mission_id int, @mission nvarchar(50), @note nvarchar(max)
+>		As
+>		Begin
+>			update mission set mission = @mission where mission_id = @mission_id
+>			update mission set note = @note where mission_id = @mission_id
+>		End
+> 测试更改：
+>
+>		exec alter_mission '1000','更改的任务名字','更改的任务备注'
+
+
 
 
 ## 触发器

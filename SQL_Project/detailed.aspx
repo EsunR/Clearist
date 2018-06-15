@@ -10,6 +10,20 @@
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 	<script type="text/javascript" src="js/detailed.js"></script>
     <script src="js/cookieManager.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        //获取一个存放子任务名的数组
+        var GetSubtasksArr = function () {
+            var subtasks_list_string = "<%= GetSubtasks()%>";
+            var subtasks_list_arr = subtasks_list_string.split(",");
+            return subtasks_list_arr;
+        }
+        //获取一个存放子任务id的数组
+        var GetSubtasksIdArr = function () {
+            var subtasks_id_string = "<%= GetSubtasksId()%>";
+            var subtasks_id_arr = subtasks_id_string.split(",");
+            return subtasks_id_arr;
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -20,23 +34,21 @@
 
         <div class="md_box">
             <asp:Label ID="md_name_title" CssClass="title" runat="server" Text="任务名称"></asp:Label>
-            <asp:TextBox ID="md_name" CssClass="text_box" runat="server"></asp:TextBox>
+            <asp:TextBox ID="md_name" CssClass="text_box" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
         </div>
 
         <div class="md_box">
             <asp:Label ID="md_note_title" CssClass="title" runat="server" Text="备注"></asp:Label>
-            <asp:TextBox ID="md_note" CssClass="text_box" runat="server"></asp:TextBox>
+            <asp:TextBox ID="md_note" CssClass="text_box" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
         </div>
 
         <div id="subtasks_box" class="md_box">
             <asp:Label ID="md_subtasks" CssClass="title" runat="server" Text="子任务"></asp:Label>
             <ul id="subtasks_list">
-                <li>子任务1</li>
-                <li>子任务1</li>
             </ul>
             <div id="add_subtasks">
-                <input id="subtasks_tb" type="text" />
-                <input id="subtasks_btn" type="button" value="添加" />
+                <input id="subtasks_tb" type="text" autocomplete="off" />
+                <input id="subtasks_btn" type="button" value="添加"  />
             </div>
         </div>
 

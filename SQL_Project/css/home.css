@@ -314,7 +314,7 @@ input{
     height: 230px;
     border: none;
     border-radius: 0px;
-    border-top: 10px solid #38bd24;
+    border-top: 10px solid #F45147;
     background: white;
     position: absolute;
     left: 15px;
@@ -346,17 +346,27 @@ input{
     width: 80px;
     height: 30px;
     border-radius: 10px;
-    border: solid 2px #38bd24;
+    border: solid 2px #F45147;
     line-height: 30px;
     text-align: center;
     cursor: pointer;
 }
 .add_list_btn:hover{
-    background: #38bd24;
+    background: #F45147;
     color: white;
+    font-weight: bold;
 }
 .add_list_btn_true{
     float: left;
+}
+#add_mission_true {
+    background: #F45147;
+    line-height: 30px;
+    color: white;
+    font-size: 16px;
+    border: solid 2px #F45147 !important;
+    height: 34px;
+    width: 84px;
 }
 .add_list_btn_false{
     float: right;

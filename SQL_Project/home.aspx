@@ -138,9 +138,9 @@
             <!--添加任务-->
             <div id="add_mission_box" class="add_mission_remind_box">
                 <div class="add_list_tag">任务名称</div>
-                <input class="add_list_text" id="add_mission_name" type="text" value="" runat="server"/>
+                <input class="add_list_text" id="add_mission_name" type="text" value="" runat="server" autocomplete="off"/>
                 <div class="add_list_tag">备注</div>
-                <input class="add_list_text" id="add_mission_note" type="text" value="" runat="server"/>
+                <input class="add_list_text" id="add_mission_note" type="text" value="" runat="server" autocomplete="off"/>
                 <div class="add_list_btn_box">
                     <asp:Button class="add_list_btn_true add_list_btn" ID="add_mission_true" runat="server" Text="确定" OnClick="add_mission_true_Click" />
                     <div class="add_list_btn_false add_list_btn" id="add_mission_false">取消</div>

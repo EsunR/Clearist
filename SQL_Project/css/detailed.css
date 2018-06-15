@@ -10,6 +10,8 @@
 #detailed_top{
     height: 20px;
 }
+
+/*文本标题*/
 .title{
     display: block;
     text-align: center;
@@ -18,6 +20,7 @@
     color: rgba(0,0,0,0.5);
     font-weight: bold;
 }
+/*文本框*/
 .text_box{
     display: block;
     height: 25px;
@@ -29,10 +32,12 @@
     border: 2px solid rgba(0,0,0,0.5);
     padding: 0 10px;
     line-height: 25px;
+    position: relative;
 }
 .text_box_click {
     border: 2px solid #F45147 !important;
 }
+/*列表*/
 #subtasks_box ul{
     display: block;
     border: 2px solid rgba(0,0,0,0.4);
@@ -58,7 +63,6 @@
     border-radius: 5px;
     height: 22px;
     line-height: 22px;
-
 }
 #subtasks_box li:hover {
     background: #F45147;
@@ -72,6 +76,15 @@
     font-size: 16px;
     padding: 0 10px;
 }
+#subtasks_list li img{
+    display: block;
+    height: 20px;
+    float: right;
+    padding-top: 1px;
+    cursor: pointer;
+}
+
+/*列表下添加子任务*/
 #subtasks_btn {
     width: 50px;
     height: 30px;
@@ -86,6 +99,7 @@
     background: #F45147;
     color: white;
 }
+/*底部信息*/
 #detailed_bottom {
     width: 450px;
     height: 140px;

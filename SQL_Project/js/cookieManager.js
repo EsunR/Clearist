@@ -18,3 +18,9 @@ function getCookie(key) {
 function removeCookie(key){
 	setCookie(key, '', -1);
 }
+//写入中文cookie
+function setCookie_CN(key, value, t) {
+    var oDate = new Date();
+    oDate.setDate(oDate.getDate() + t);
+    document.cookie = key + '=' + escape(value) + ';expires=' + oDate.toGMTString();
+}
