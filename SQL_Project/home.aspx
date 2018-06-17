@@ -92,11 +92,11 @@
 	<div id="psw_box">
 		<div id="psw_box_title">修改密码</div>
 		<div class="psw_title">原密码</div>
-        <asp:TextBox ID="old_psw" runat="server"></asp:TextBox>
+        <asp:TextBox ID="old_psw" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
 		<div class="psw_title">新密码</div>
-        <asp:TextBox ID="new_psw" runat="server"></asp:TextBox>
+        <asp:TextBox ID="new_psw" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
 		<div class="psw_title">重复密码</div>
-        <asp:TextBox ID="re_new_psw" runat="server"></asp:TextBox>
+        <asp:TextBox ID="re_new_psw" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
       <div id="psw_btn_box">
       	<div class="psw_btn" style="border-right: solid 1px rgba(255,255,255,0.8);">
               <asp:Button ID="psw_suer" CssClass="psw_real_btn" runat="server" Text="确定" OnClick="psw_suer_Click" OnClientClick="return psw_verify();" />
