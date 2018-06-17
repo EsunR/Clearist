@@ -14,15 +14,22 @@
 		$("#Button4").click(function(){
 			$("#register_box").slideUp();
 		})
-		$("#show_developer_setting").mouseover(function(){
-			$("#show_developer_setting").animate({fontSize:'20px'},100);
-		})
-		$("#show_developer_setting").mouseleave(function(){
-			$("#show_developer_setting").animate({fontSize:'10px'},100);
-		})
+		
 		$("#show_developer_setting").click(function(){
 			$("#developer_panel").css("display","block");
-		})
+        })
+
+        var dev_mode = 0
+        $("#dev_setting").click(function () {
+            if (dev_mode == 0) {
+                $("#developer_panel").animate({ "top": "0px" }, 500);
+                dev_mode = 1;
+            }
+            else {
+                $("#developer_panel").animate({ "top": "-100px" }, 500);
+                dev_mode = 0;
+            }
+        })
 	})
 </script>
 </head>
@@ -65,9 +72,7 @@
             		<div class="title">LOGIN</div>
             	</div>
             	<div class="decoration" id="decoration_2">
-            		<!--<div id="show_developer_setting">
-            			<a>开发人员选项</a>
-            		</div>-->
+            		<img id="dev_setting" src="img/dev_setting.png" />
             	</div>
 	            <div class="label">用户名</div>
 	            <div class="box" id="id_box">
@@ -87,6 +92,11 @@
 		            </div>
 		         </div>
 	         </div>
+            <div id="developer_panel">
+                <span id="dev_title">开发人员选项:</span>
+                <asp:Button ID="dev_btn" runat="server" Text="连接数据库" />
+                <asp:Label ID="db_status" runat="server" Text="(Unknow)" ForeColor="yellow"></asp:Label>
+            </div>
 		</div>
 	</form>
 </body>

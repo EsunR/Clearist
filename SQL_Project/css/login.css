@@ -99,29 +99,51 @@ body {
 	padding-left: 15px;
 	letter-spacing: 15px;
 }
-#show_developer_setting{
-	font-size: 10px;
-	text-align: center;
-	font-weight: 100;
+
+
+
+
+
+
+
+/*开发人员选项*/
+#developer_panel {
+    margin: 70px auto;
+    width: 330px;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    top: -100px;
+    z-index: -1;
+    background: white;
+    padding: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
-#show_developer_setting a{
-	cursor: pointer;
+#dev_title {
+    font-size: 18px;
+    line-height: 20px;
 }
-#developer_panel{
-	width: 500px;
-	height: 50px;
-	background: #F45147;
-	padding-top: 20px;
-	position: relative;
-	top: -50px;
-	border-radius: 0 0 30px 30px;
-	display: none;
+#dev_btn {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    line-height: 20px;
+    cursor: pointer;
+
 }
-#developer_panel input{
-	margin: 0 auto;
-	display: block;
-	font-size: 20px;
+#dev_btn:hover{
+    color:#f45147;
 }
+#dev_setting{
+    width: 30px;
+    cursor: pointer;
+    position: relative;
+    left: 210px;
+    top: 5px;
+}
+
 
 
 

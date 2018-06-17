@@ -13,7 +13,24 @@ public partial class login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //检测数据库状态
+        string strCon = WebConfigurationManager.ConnectionStrings["account"].ConnectionString;
+        SqlConnection con = new SqlConnection(strCon);
+        try
+        {
+            con.Open();
+            db_status.Text = "(已连接)";
+            db_status.ForeColor = System.Drawing.ColorTranslator.FromHtml("Green");
+        }
+        catch(SqlException ex)
+        {
+            db_status.Text = "(未连接)";
+            db_status.ForeColor = System.Drawing.ColorTranslator.FromHtml("Red");
+        }
+        finally
+        {
+            con.Close();
+        }
     }
     /// <summary>
     /// 登录按钮
