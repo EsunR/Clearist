@@ -1,8 +1,12 @@
 # Clearist
 参考项目：番茄土豆 & 滴答清单
 
-基于ASP.NET、SQL Server
+基于：ASP.NET
+
+数据库支持：SQL Server
+
 ***
+
 ## Cookie对象
 * id: 用户的ID
 * uid: 用户的UID
@@ -135,6 +139,14 @@
 
 ## 触发器
 * 在删除主任务时，清除该任务对应的子任务
+>		Create Trigger delete_mission 
+>		On mission
+>		For delete
+>		As
+>		Begin
+>			Delete From subtasks Where mission_id = (Select mission_id From deleted)
+>		End
+
 
 ***
 

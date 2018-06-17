@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Configuration;
-
+using System.IO;
 
 public partial class login : System.Web.UI.Page
 {
@@ -143,5 +143,56 @@ public partial class login : System.Web.UI.Page
             Response.Write("<script>alert('用户名不能为空！')</script>");
         }
         
+    }
+
+    protected void FormatDB_Click(object sender, EventArgs e)
+    {
+     //使用master数据库
+        string strCon = WebConfigurationManager.ConnectionStrings["master"].ConnectionString;
+        SqlConnection con = new SqlConnection(strCon);
+        con.Open();
+        //读取脚本
+        /*
+        备用方法：直接移动DataBase文件中存放的mdf和ldf文件到数据库文件中
+        SqlCommand com = new SqlCommand();
+        com.Connection = con;
+        string path1 = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "DataBase\\Clearist_Realease_Version.mdf";
+        string path2 = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "DataBase\\Clearist_Realease_Version.ldf";
+        com.CommandText = "exec sp_attach_db Clearist, '" + path1 +"'" + ",'"+ path2 +"'";
+        com.ExecuteNonQuery();
+        con.Close();
+        */
+        SqlCommand com = new SqlCommand();
+        com.Connection = con;
+        //通过读取数据库sql脚本文件来初始化数据库，由于CommandText无法运行“GO”语句，所以在读到“GO”时就将已读的语句先执行
+        string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "\\DataBase\\ClearistDB.sql";
+        StreamReader sr = new StreamReader(path);
+        string line = "";
+        string sqlstr = "";
+        while ((line = sr.ReadLine()) != null)
+        {
+            if(line == "GO")
+            {
+                try
+                {
+                    com.CommandText = sqlstr;
+                    com.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    Response.Write("<script>alert('数据库已初始化，请勿再次初始化！')</script>");
+                    break;
+                }
+                finally
+                {
+                    sqlstr = "";
+                }
+            }
+            else
+            {
+                sqlstr += line + " ";
+            }
+        }
+
     }
 }

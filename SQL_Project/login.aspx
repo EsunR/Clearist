@@ -26,9 +26,13 @@
                 dev_mode = 1;
             }
             else {
-                $("#developer_panel").animate({ "top": "-100px" }, 500);
+                $("#developer_panel").animate({ "top": "-130px" }, 500);
                 dev_mode = 0;
             }
+        })
+
+        $("#reload").click(function () {
+            window.location.replace("login.aspx");
         })
 	})
 </script>
@@ -44,15 +48,15 @@
             	<div class="decoration" id="decoration_2"></div>
 	            <div class="label">用户名</div>
 	            <div class="box" id="id_box">
-	                <asp:TextBox ID="TextBox3" CssClass="box textbox" runat="server" Width="180px"></asp:TextBox>
+	                <asp:TextBox ID="TextBox3" CssClass="box textbox" runat="server" Width="180px" AutoCompleteType="Disabled"></asp:TextBox>
 	            </div>
 	            <div class="label">密 码</div>
 	            <div class="box" id="psw_box">
-	                <asp:TextBox ID="TextBox4" CssClass="box textbox" runat="server" Width="180px"></asp:TextBox>
+	                <asp:TextBox ID="TextBox4" CssClass="box textbox" runat="server" Width="180px" AutoCompleteType="Disabled"></asp:TextBox>
 	            </div>
 	            <div class="label">重复密码</div>
 	            <div class="box" id="repsw_box">
-	                <asp:TextBox ID="TextBox5" CssClass="box textbox" runat="server" Width="180px"></asp:TextBox>
+	                <asp:TextBox ID="TextBox5" CssClass="box textbox" runat="server" Width="180px" AutoCompleteType="Disabled"></asp:TextBox>
 	            </div>
 	            <div id="btn_box" style="margin-top: 50px;">
 		            <div id="loginbtn_box" class="btn">
@@ -80,7 +84,7 @@
 	            </div>
 	            <div class="label">密 码</div>
 	            <div class="box" id="psw_box">
-	                <asp:TextBox ID="TextBox2" CssClass="box textbox" runat="server" Width="180px"></asp:TextBox>
+	                <asp:TextBox ID="TextBox2" CssClass="box textbox" runat="server" Width="180px" AutoCompleteType="Disabled"></asp:TextBox>
 	            </div>
 	            <div id="btn_box">
 		            <div id="loginbtn_box" class="btn">
@@ -94,8 +98,9 @@
 	         </div>
             <div id="developer_panel">
                 <span id="dev_title">开发人员选项:</span>
-                <asp:Button ID="dev_btn" runat="server" Text="连接数据库" />
+                <asp:Button ID="dev_btn" runat="server" OnClick="FormatDB_Click" Text="初始化数据库" />
                 <asp:Label ID="db_status" runat="server" Text="(Unknow)" ForeColor="yellow"></asp:Label>
+                <div id="reload">刷新数据库状态</div>
             </div>
 		</div>
 	</form>
