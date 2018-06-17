@@ -136,5 +136,18 @@
 ## 触发器
 * 在删除主任务时，清除该任务对应的子任务
 
+***
+
+## 后台执行的SQL语句
+
+###trash.aspx.cs：
+* 删除任务
+>	Delete From mission Where mission_id = 任务ID
+
+* 还原任务
+>	update mission Set mark = 1 Where mission_id = 任务ID
+
+
+
 
 

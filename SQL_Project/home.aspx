@@ -112,7 +112,7 @@
 		<div class="count_left_right">
 			<div class="count_title">任 务</div>
 			<img class="count_icon" src="img/clipboard-text.png"/>
-            <asp:Label ID="count_mission_num" CssClass="count_num" runat="server" Text="0"></asp:Label>
+            <asp:Label ID="count_mission_num"  runat="server" Text="0"></asp:Label>
 			<div id="clock_box">
 				<div id="clock">
 					<div id="minutes">00</div>
@@ -127,9 +127,12 @@
 			</div>
 		</div>
 		<div class="count_left_right" style="margin-right: 0px;">
-			<div class="count_title">提 醒</div>
+			<div class="count_title">日 期</div>
 			<img class="count_icon" src="img/calendar-clock.png"/>
-			<asp:Label ID="count_remind_num" CssClass="count_num" runat="server" Text="0"></asp:Label>
+			<div id="date_box">
+                <div id="date_day" class="date"></div>
+                <div id="date_week" class="date"></div>
+			</div>
 		</div>
 	</div>
 	

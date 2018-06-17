@@ -85,6 +85,33 @@ public partial class trash : System.Web.UI.Page
 
     protected void confirm_button_Click(object sender, EventArgs e)
     {
-
+        string delete_forever_string = Request.Cookies["mission_delete_forever"].Value;
+        string backup_string = Request.Cookies["mission_backup"].Value;
+        //执行彻底删除任务的语句
+        if(delete_forever_string != "")
+        {
+            string[] delete_forever_arr = delete_forever_string.Split(',');
+            OpenAccountDB();
+            for (int i = 0; i < delete_forever_arr.Length; i++)
+            {
+                accountCom.CommandText = "Delete From mission Where mission_id = " + delete_forever_arr[i];
+                accountCom.ExecuteNonQuery();
+            }
+            accountCon.Close();
+        }
+        //执行还原任务的语句
+        if(backup_string != "")
+        {
+            string[] backup_arr = backup_string.Split(',');
+            OpenAccountDB();
+            for(int i = 0; i < backup_arr.Length; i++)
+            {
+                accountCom.CommandText = "Update Mission Set mark = 1 Where mission_id = " + backup_arr[i];
+                accountCom.ExecuteNonQuery();
+            }
+            accountCon.Close();
+        }
+        Response.Cookies["mission_delete_forever"].Value = "";
+        Response.Cookies["mission_backup"].Value = "";
     }
 }

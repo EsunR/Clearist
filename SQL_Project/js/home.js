@@ -8,10 +8,19 @@ $(function(){
 
 
 
-    //神奇的测试按钮！！！！！！！！！！
-    $("#Button2").click(function () {
-        console.log(mission_selected);
-    })
+//  显示日期
+    var d = new Date();
+    $("#date_day").text(d.getFullYear() + "年" + d.getMonth() + "月" + d.getDate() + "日");
+    var weekday = new Array(7)
+    weekday[0] = "星期日"
+    weekday[1] = "星期一"
+    weekday[2] = "星期二"
+    weekday[3] = "星期三"
+    weekday[4] = "星期四"
+    weekday[5] = "星期五"
+    weekday[6] = "星期六"
+    $("#date_week").text(weekday[d.getDay()]);
+
 
 //  初始化列表
     var format_list = function (mission_remind) {

@@ -189,21 +189,41 @@ input{
 	font-size: 20px;
 	border-radius: 5px 5px 0 0;
 }
-.count_icon{
-	width: 100px;
-	margin: 25px;
-	margin-left: 60px;
+.count_icon {
+    width: 100px;
+    margin: 25px;
+    margin-left: 60px;
+    margin-right: 0px;
+    border-right: solid 2px rgba(0,0,0,0.1);
+    padding-right: 64px;
 }
-.count_num{
-	font-size: 80px;
-	display: block;
-	float: right;
-	font-weight: bold;
-	color: #757575;
-	padding-left: 85px;
-	margin-top: 20px;
-	margin-right: 79px;
-	border-left: solid 2px rgba(0,0,0,0.1);
+#count_mission_num {
+    font-size: 80px;
+    display: block;
+    float: right;
+    width: 224px;
+    height: 152px;
+    line-height: 152px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: bold;
+    color: #757575;
+}
+#date_box {
+    width: 224px;
+    height: 152px;
+    float: right;
+}
+.date {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #757575;
+    line-height: 50px;
+}
+#date_day{
+    margin-top: 26px;
 }
 
 /*时钟*/
