@@ -58,6 +58,9 @@ public partial class login : System.Web.UI.Page
                 //初始化删除任务（当cookie中mission_delete的值为0时，表示数据刷新前没有进行删除操作）
                 Response.Cookies["mission_delete"].Value = "0";
                 Response.Cookies["mission_delete"].Expires = DateTime.Now.AddDays(7);
+                //初始化选择任务
+                Response.Cookies["mission_selected"].Value = "";
+                Response.Cookies["mission_selected"].Expires = DateTime.Now.AddDays(7);
                 //初始化详细任务
                 Response.Cookies["detailed"].Value = "0";
                 Response.Cookies["detailed"].Expires = DateTime.Now.AddDays(7);
@@ -166,7 +169,7 @@ public partial class login : System.Web.UI.Page
         com.Connection = con;
         //通过读取数据库sql脚本文件来初始化数据库，由于CommandText无法运行“GO”语句，所以在读到“GO”时就将已读的语句先执行
         string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "\\DataBase\\ClearistDB.sql";
-        StreamReader sr = new StreamReader(path);
+        StreamReader sr = new StreamReader(path, System.Text.Encoding.Default);
         string line = "";
         string sqlstr = "";
         while ((line = sr.ReadLine()) != null)
@@ -182,7 +185,7 @@ public partial class login : System.Web.UI.Page
                 {
                     //如果已经建立数据库就对数据库数据进行初始化操作
                     string path_2 = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "\\DataBase\\RebuildDB.sql";
-                    StreamReader sr_2 = new StreamReader(path_2);
+                    StreamReader sr_2 = new StreamReader(path_2, System.Text.Encoding.Default);
                     string line_2 = "";
                     string sqlstr_2 = "";
                     while ((line_2 = sr_2.ReadLine()) != null)
