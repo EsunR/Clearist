@@ -10,7 +10,7 @@ $(function(){
 
 //  显示日期
     var d = new Date();
-    $("#date_day").text(d.getFullYear() + "年" + d.getMonth() + "月" + d.getDate() + "日");
+    $("#date_day").text(d.getFullYear() + "年" + (d.getMonth()+1) + "月" + d.getDate() + "日");
     var weekday = new Array(7)
     weekday[0] = "星期日"
     weekday[1] = "星期一"
