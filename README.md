@@ -159,7 +159,42 @@
 * 还原任务
 >	update mission Set mark = 1 Where mission_id = 任务ID
 
+***
 
+## 界面展示
+1. 登陆界面：
+   
+   ![](https://ws1.sinaimg.cn/large/a71efaafly1fxbdwta9taj21go0pldhu.jpg)
 
+2. 开发人员连接数据库：
+   
+   ![](https://ws1.sinaimg.cn/large/a71efaafly1fxbdybupn6j20ed053mxb.jpg)
 
+3. 主界面
+   
+   ![](https://ws1.sinaimg.cn/large/a71efaafly1fxbe07hjs4j21h30pp40k.jpg)
+
+4. 控制面板
+
+   ![](https://ws1.sinaimg.cn/large/a71efaafly1fxbe0s6cihj205l05jjrg.jpg)
+
+5. 添加任务
+
+   ![](https://ws1.sinaimg.cn/large/a71efaafly1fxbe9tmdbeg20hv0mjwj8.jpg)
+
+6. 任务信息变更
+
+   ![](https://ws1.sinaimg.cn/large/a71efaafly1fxbeco9m4ag20xa0mjb29.jpg)
+
+7. 计时器
+   
+    ![](https://ws1.sinaimg.cn/large/a71efaafly1fxbef071j6g20e80mj10k.jpg)
+
+8. 已完成的任务
+   
+   ![](https://ws1.sinaimg.cn/large/a71efaafly1fxbehy5rn6g21df0n3ait.jpg)
+
+9. 彻底删除任务
+
+   ![](https://ws1.sinaimg.cn/large/a71efaafly1fxbejvwb5yg21df0oin4k.jpg)
 
